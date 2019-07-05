@@ -1,7 +1,44 @@
+ 
  {% extends 'base/index.html' %}
 
  {% block content %}
+ {% load static %}
+<div class="content-panel">
+            <div class="adv-table">
+              <div id="hidden-table-info_wrapper" class="dataTables_wrapper form-inline" role="grid"><div class="row-fluid"><div class="span6"><div id="hidden-table-info_length" class="dataTables_length"><label><select size="1" name="hidden-table-info_length" aria-controls="hidden-table-info"><option value="10" selected="selected">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> records per page</label></div></div><div class="span6"><div class="dataTables_filter" id="hidden-table-info_filter"><label>Search: <input type="text" aria-controls="hidden-table-info"></label></div></div></div>
+  <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered dataTable" id="hidden-table-info" aria-describedby="hidden-table-info_info">
+                <thead>
+                  <tr role="row"><th class="sorting_disabled" role="columnheader" rowspan="1" colspan="1" style="width: 12px;" aria-label=""></th><th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="hidden-table-info" rowspan="1" colspan="1" style="width: 173px;" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Name</th><th class="sorting" role="columnheader" tabindex="0" aria-controls="hidden-table-info" rowspan="1" colspan="1" style="width: 234px;" aria-label="Browser: activate to sort column ascending">Address</th>
+                  <th class="hidden-phone sorting" role="columnheader" tabindex="0" aria-controls="hidden-table-info" rowspan="1" colspan="1" style="width: 214px;" aria-label="Platform(s): activate to sort column ascending">Phone</th>
+                 
+                 
+                </thead>
+                
+              <tbody role="alert" aria-live="polite" aria-relevant="all">
+              {% for c in customers%}
+              <tr class="gradeA odd">
+              <td class="center ">
+              <img src="{% static 'lib/advanced-datatable/images/details_open.png' %}">
+              </td>
+                    <td class=" sorting_1">{{c.name}}</td>
+                    <td class="">{{c.address}}</td>
+                    <td class="hidden-phone">{{c.phone}}</td>
+                    <td>
+                     <a class="btn btn-info" href="">
+                            <i class="fa fa-pencil"></i>
+                      </a>
+                      <a class="btn btn-danger" href="">
+                            <i class="fa fa-close"></i>
+                      </a>
+                      </td>
+                  </tr>
+                  {% endfor %}
+                  </tbody></table>
 
-  <h1> listing </h1>
+                    
+                  <div class="row-fluid"><div class="span6"><div class="dataTables_info" id="hidden-table-info_info">Showing 1 to 10 of 57 entries</div></div><div class="span6"><div class="dataTables_paginate paging_bootstrap pagination"><ul><li class="prev disabled"><a href="#">← Previous</a></li><li class="active"><a href="#">1</a></li><li><a href="#">2</a></li><li><a href="#">3</a></li><li><a href="#">4</a></li><li><a href="#">5</a></li><li class="next"><a href="#">Next → </a></li></ul></div></div></div></div>
+            </div>
+          </div>
 
   {% endblock %}
+
