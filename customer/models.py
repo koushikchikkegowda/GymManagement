@@ -33,8 +33,8 @@ class Customer(models.Model):
     name = models.CharField(max_length=250, unique=True)
     status = models.CharField(max_length=200,blank=True,null=True)
     membership = models.ForeignKey(membership, on_delete=models.SET_NULL, blank=True,null=True)
-    address = models.TextField()
-    phone = models.CharField(max_length=200)
+    address = models.TextField(blank=True,null=True)
+    phone = models.CharField(max_length=200,blank=True,null=True)
     
 
     class Meta:

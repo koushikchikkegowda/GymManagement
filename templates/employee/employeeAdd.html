@@ -1,0 +1,67 @@
+
+ {% extends 'base/index.html' %}
+
+ {% block content %}
+ {% load static %}
+    <div class="content-panel">
+  
+   <form class="cmxform form-horizontal style-form" id="signupForm" method="post" action="">
+      {% csrf_token %}
+                  <div class="form-group ">
+                    <label for="name" class="control-label col-lg-2">Name</label>
+                    <div class="col-lg-10">
+                      <input class=" form-control" id="name" name="name" type="text" >
+                    </div>
+                  </div>
+
+                <div class="form-group">
+                  <label class="control-label col-md-3">Joining</label>
+                  <div class="col-md-3 col-xs-11">
+                    <input class="form-control form-control-inline input-medium default-date-picker" size="16" type="text" value="" name="joining">
+                    <span class="help-block">Select date</span>
+                  </div>
+                </div>
+
+                 <div class="form-group ">
+                    <label for="number" class="control-label col-lg-2">Designation</label>
+                    <div class="col-lg-10">
+                      <input class=" form-control" id="name" name="designation" type="text" >
+                    </div>
+                  </div>
+                
+
+    
+
+
+                 <div class="form-group">
+                   <label for="address" class="control-label col-lg-2">Address</label>
+                 <div class="col-lg-10">
+                <textarea class="form-control" name="address" id="contact-message" placeholder="Address" rows="5" data-rule="required" data-msg="Please write something for us"></textarea>
+                </div>
+                <div class="validate"></div>
+                </div>
+
+
+                 <div class="form-group ">
+                    <label for="number" class="control-label col-lg-2">Phone</label>
+                    <div class="col-lg-10">
+                      <input class=" form-control" id="name" name="phone" type="text" >
+                    </div>
+                </div>
+                
+
+
+
+               
+                  <div class="form-group">
+                    <div class="col-lg-offset-2 col-lg-10">
+                      <button class="btn btn-theme" type="submit">Save</button>
+                      <button class="btn btn-theme04" type="button">Cancel</button>
+                    </div>
+                  </div>
+                </form>
+               
+                
+        </div>
+
+   {% endblock %}

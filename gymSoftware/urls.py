@@ -21,9 +21,10 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('customer/', include('customer.urls')),
+    
     url(r'^login/$', auth_views.LoginView.as_view(), name='login'),
     url(r'^logout/$', auth_views.LogoutView.as_view(), name='logout'),
-    # path('employee/', include('employee.urls')),
+    path('employee/', include('employee.urls')),
     # path('membership/', include('membership.urls')),
     # path('sales/', include('sales.urls')),
     
