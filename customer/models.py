@@ -13,6 +13,7 @@ class membership(models.Model):
     type = models.CharField(max_length=200)  #pt or normal
     price =  models.IntegerField()
     duration =  models.IntegerField()
+    status= models.CharField(max_length=200,blank=True,null=True)
     class Meta:
         db_table = 'membership'
     def __str__(self):
@@ -20,11 +21,12 @@ class membership(models.Model):
 
 class Employee(models.Model):
     name = models.CharField(max_length=250, unique=True)
-    joining = models.DateTimeField(blank=True,null=True)
+    joining = models.DateField(blank=True,null=True)
     designation = models.CharField(max_length=200)
-    status = models.CharField(max_length=200,blank=True,null=True)
+    status = models.CharField(max_length=200,blank=True,null=True,default="Active")
     address = models.TextField()
     phone = models.CharField(max_length=200)
+    IdentityProof=models.CharField(max_length=200,blank=True,null=True)
     class Meta:
         db_table = 'Employee'
     def __str__(self):
@@ -32,7 +34,6 @@ class Employee(models.Model):
 class Customer(models.Model):
     name = models.CharField(max_length=250, unique=True)
     status = models.CharField(max_length=200,blank=True,null=True)
-    membership = models.ForeignKey(membership, on_delete=models.SET_NULL, blank=True,null=True)
     address = models.TextField(blank=True,null=True)
     phone = models.CharField(max_length=200,blank=True,null=True)
     
@@ -44,12 +45,14 @@ class Customer(models.Model):
 
 
 class sales(models.Model):
-    type = models.CharField(max_length=200)
-    amount =  models.IntegerField()
-    duration =  models.IntegerField()
-    date = models.DateTimeField(blank=True,null=True)
-    Employee = models.ForeignKey(Employee, on_delete=models.SET_NULL, blank=True,null=True)
-    Customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, blank=True,null=True)
+    NewOrOld = models.CharField(max_length=200,blank=True,null=True)  #Renewal or new
+    startDate = models.DateField(blank=True,null=True)
+    endDate = models.DateField(blank=True,null=True)
+    PtOrNor = models.CharField(max_length=200,blank=True,null=True)
+    Employee = models.CharField(max_length=200,blank=True,null=True)
+    phone = models.CharField(max_length=200,blank=True,null=True)
+    customerName = models.CharField(max_length=200,blank=True,null=True)
+    price = models.CharField(max_length=200,blank=True,null=True)
     class Meta:
         db_table = 'sales'
     # def __str__(self):

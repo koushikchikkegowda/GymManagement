@@ -30,6 +30,7 @@ def customer_delete(request,pk):
     
 @login_required
 def addCustomer(request):
+    print("entered")
     memberships = membership.objects.all()
     context={
        
@@ -37,21 +38,22 @@ def addCustomer(request):
     }
     return render(request, 'customer/addCustomer.html',context)
 
-# @login_required
-# def customer_addItem(request):
-#     if request.method == "POST":
-#         customer = Customer()
-#         customer.username=request.POST["username"]
-#         customer.email=request.POST["email"]
-#         customer.password=request.POST["password"]
-#         customer.fullname=request.POST["fullname"]
-#         customer.mobile_number=request.POST["mobile_number"]
-#         customer.gender=request.POST["gender"]
-#         customer.date_of_birth=datetime.strptime(request.POST["date_of_birth"], "%m/%d/%Y")
-#         customer.address=request.POST["address"]
-#         customer.save()
+@login_required
+def addCustomer_items(request):
+    if request.method == "POST":
+        customer = Customer()
+        customer.name=request.POST["name"]
+        
+        customer.membership_id=request.POST["membership"]
+        customer.address=request.POST["address"]
+        customer.phone=request.POST["phone"]
+        customer.status="Active"
+        
+        # customer.date_of_birth=datetime.strptime(request.POST["date_of_birth"], "%m/%d/%Y")
+       
+        customer.save()
 
-#         return redirect(reverse('home:listCustomer'))
+        return redirect(reverse('customerList'))
 
 @login_required
 def customer_edit(request,pk):
@@ -79,18 +81,3 @@ def customer_editItem(request,pk):
         print(test)
         return redirect(reverse('customerList'))
     return redirect(reverse('customerList'))
-# @login_required
-# def customer_editItem(request,pk):
-#     if request.method == "POST":
-#         print("update")
-#         custObj=Customer()
-#         custObj.username=request.POST["name"]
-#         custObj.status=request.POST["status"]
-       
-#         custObj.membership_id=request.POST["membership"]
-#         custObj.address=request.POST["address"]
-#         custObj.phone=request.POST["phone"]
-#         custObj.save()
-
-#         return redirect(reverse('customerList'))
-#     return redirect(reverse('customerList'))

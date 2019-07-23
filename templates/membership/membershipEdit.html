@@ -1,0 +1,69 @@
+ {% extends 'base/index.html' %}
+
+ {% block content %}
+ {% load static %}
+  
+<div class="content-panel">
+    {% for m in edit_membership %}
+   <form class="cmxform form-horizontal style-form" id="signupForm" method="post" action="{% url 'membershipEdit_item' pk=m.id %}">
+      {% csrf_token %}
+                <div class="form-group ">
+                    <label for="title" class="control-label col-lg-2">Title</label>
+                    <div class="col-lg-10">
+                      <input class=" form-control" id="name" name="title" type="text" value="{{ m.title}}" >
+                    </div>
+                  </div>
+                
+
+                <div class="form-group ">
+                  <label for="status" class="control-label col-lg-2">Membership</label>
+                   <div class="col-lg-10">
+                   
+                   <select class="form-control" name="membership">
+                  {% if m.type == "regular" %}
+                  <option value="regular" selected>Regular</option>
+                  <option value="pt">PT</option>
+                  {% else %}
+                   <option value="regular" selected>Regular</option>
+                  <option value="pt" selected >PT</option>
+                  {% endif %}
+                    </select>
+                    
+                    </div>
+                  </div>
+
+
+                 <div class="form-group ">
+                    <label for="price" class="control-label col-lg-2">Price</label>
+                    <div class="col-lg-10">
+                      <input class=" form-control" id="name" name="price" type="number" value="{{ m.price}}">
+                    </div>
+                  </div>
+
+
+                   <div class="form-group ">
+                    <label for="duration" class="control-label col-lg-2">Duration</label>
+                    <div class="col-lg-10">
+                      <input class=" form-control" id="name" name="duration" type="number" value="{{ m.duration}}">
+                    </div>
+                  </div>
+
+
+
+               
+                  <div class="form-group">
+                    <div class="col-lg-offset-2 col-lg-10">
+                      <button class="btn btn-theme" type="submit">Save</button>
+                      <button class="btn btn-theme04" type="button">Cancel</button>
+                    </div>
+                  </div>
+                </form>
+               
+                
+        </div>
+
+                {% endfor %}
+                
+        </div>
+
+{% endblock %}
